@@ -1,13 +1,12 @@
 <?php require('header.php'); ?>
 
-<main>
-    <h1>Zippy Used Autos</h1>
+<main class="container">
     <section class="mt-2 mb-2">
         <form action="index.php" method="GET">
             <label for="makeId">
                 <h4>Make:</h4>
             </label>
-            <select id="makeId" name="makeId">
+            <select id="makeId" name="makeId" class="me-2 ms-1">
                 <option value="all">View All Makes</option>
                 <?php foreach ($makes as $make) { ?>
                     <option value="<?php echo $make['id'] ?>">
@@ -18,7 +17,7 @@
             <label for="typeId">
                 <h4>Type:</h4>
             </label>
-            <select id="typeId" name="typeId">
+            <select id="typeId" name="typeId" class="me-2 ms-1">
                 <option value="all">View All Types</option>
                 <?php foreach ($types as $type) { ?>
                     <option value="<?php echo $type['id'] ?>">
@@ -29,7 +28,7 @@
             <label for="classId">
                 <h4>Class:</h4>
             </label>
-            <select id="classId" name="classId">
+            <select id="classId" name="classId" class="me-2 ms-1">
                 <option value="all">View All Classes</option>
                 <?php foreach ($classes as $class) { ?>
                     <option value="<?php echo $class['id'] ?>">
@@ -37,7 +36,13 @@
                     </option>
                 <?php } ?>
             </select>
-
+            <label for="sortMethod">
+                <p>Sort By: </p>
+            </label>
+            <input type="radio" id="price" name="sortMethod" value="price">
+            <label for="price">Price</label>
+            <input type="radio" id="year" name="sortMethod" value="year">
+            <label for="year">Year</label>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </section>

@@ -17,6 +17,10 @@ if ($action == NULL) {
     }
 }
 
+if (!isset($sortMethod)) {
+    $sortMethod = filter_input(INPUT_GET, 'sortMethod');
+}
+
 if ($action == 'list_vehicles') {
     if (!isset($makeId)) {
         $makeId = filter_input(
@@ -42,15 +46,15 @@ if ($action == 'list_vehicles') {
     if ($makeId == NULL || $makeId == FALSE) {
         if ($typeId == NULL || $typeId == FALSE) {
             if ($classId == NULL || $classId == FALSE) {
-                $vehicles = get_all_vehicles();
+                $vehicles = get_all_vehicles($sortMethod);
             } else {
-                $vehicles = get_vehicles_by_class($classId);
+                $vehicles = get_vehicles_by_class($classId, $sortMethod);
             }
         } else {
-            $vehicles = get_vehicles_by_type($typeId);
+            $vehicles = get_vehicles_by_type($typeId, $sortMethod);
         }
     } else {
-        $vehicles = get_vehicles_by_make($makeId);
+        $vehicles = get_vehicles_by_make($makeId, $sortMethod);
     }
     include('./view/vehicle_list.php');
-} 
+}

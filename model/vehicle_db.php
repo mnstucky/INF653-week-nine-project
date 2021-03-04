@@ -2,9 +2,14 @@
 
 require('db_connect.php');
 
-function get_all_vehicles() {
+function get_all_vehicles($sortMethod)
+{
     global $db;
-    $query = 'SELECT * FROM vehicles';
+    if ($sortMethod == 'year') {
+        $query = 'SELECT * FROM vehicles ORDER BY year DESC';
+    } else {
+        $query = 'SELECT * FROM vehicles ORDER BY price DESC';
+    }
     $statement = $db->prepare($query);
     $statement->execute();
     $vehicles = $statement->fetchAll();
@@ -12,8 +17,14 @@ function get_all_vehicles() {
     return $vehicles;
 }
 
-function get_vehicles_by_make($makeId) {
+function get_vehicles_by_make($makeId, $sortMethod)
+{
     global $db;
+    if ($sortMethod == 'year') {
+        $query = 'SELECT * FROM vehicles ORDER BY year DESC';
+    } else {
+        $query = 'SELECT * FROM vehicles ORDER BY price DESC';
+    }
     $query = 'SELECT * FROM vehicles WHERE make_id = :makeid';
     $statement = $db->prepare($query);
     $statement->bindValue(':makeid', $makeId);
@@ -23,9 +34,14 @@ function get_vehicles_by_make($makeId) {
     return $vehicles;
 }
 
-function get_vehicles_by_type($typeId) {
+function get_vehicles_by_type($typeId, $sortMethod)
+{
     global $db;
-    $query = 'SELECT * FROM vehicles WHERE type_id = :typeid';
+    if ($sortMethod == 'year') {
+        $query = 'SELECT * FROM vehicles WHERE type_id = :typeid ORDER BY year DESC';
+    } else {
+        $query = 'SELECT * FROM vehicles WHERE type_id = :typeid ORDER BY price DESC';
+    }
     $statement = $db->prepare($query);
     $statement->bindValue(':typeid', $typeId);
     $statement->execute();
@@ -34,9 +50,14 @@ function get_vehicles_by_type($typeId) {
     return $vehicles;
 }
 
-function get_vehicles_by_class($classId) {
+function get_vehicles_by_class($classId, $sortMethod)
+{
     global $db;
-    $query = 'SELECT * FROM vehicles WHERE class_id = :classid';
+    if ($sortMethod == 'year') {
+        $query = 'SELECT * FROM vehicles WHERE class_id = :classid ORDER BY year DESC';
+    } else {
+        $query = 'SELECT * FROM vehicles WHERE class_id = :classid ORDER BY price DESC';
+    }
     $statement = $db->prepare($query);
     $statement->bindValue(':classid', $classId);
     $statement->execute();
