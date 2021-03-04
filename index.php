@@ -6,6 +6,8 @@ require('./model/type_db.php');
 require('./model/class_db.php');
 
 $makes = get_makes();
+$types = get_types();
+$classes = get_classes();
 
 $action = filter_input(INPUT_POST, 'action');
 if ($action == NULL) {
