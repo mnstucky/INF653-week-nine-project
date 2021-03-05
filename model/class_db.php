@@ -24,3 +24,12 @@ function get_classes()
     $statement->closeCursor();
     return $classes;
 }
+
+function delete_class($classId) {
+    global $db;
+    $query = 'DELETE FROM classes WHERE id = :classid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':classid', $classId);
+    $statement->execute();
+    $statement->closeCursor();
+}

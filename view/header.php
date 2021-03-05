@@ -29,7 +29,7 @@
     <header class="container">
         <nav class="navbar navbar-light">
             <div class="container-fluid">
-                <a class="navbar-brand" href="index.php?action=list_items">
+                <a class="navbar-brand" href="index.php?action=list_vehicles">
                     <h1>Zippy Used Autos</h1>
                 </a>
             </div>
