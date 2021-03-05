@@ -25,6 +25,15 @@ function get_classes()
     return $classes;
 }
 
+function add_class($class_name) {
+    global $db;
+    $query = 'INSERT INTO classes (class) VALUES (:classname)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':classname', $class_name);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
 function delete_class($classId) {
     global $db;
     $query = 'DELETE FROM classes WHERE id = :classid';

@@ -53,6 +53,10 @@ switch ($action) {
     case 'show_classes_form':
         include('./controller/classes.php');
         break;
+    case 'add_class':
+        $new_class = filter_input(INPUT_POST, 'new_class');
+        include('./controller/classes.php');
+        break;
     case 'delete_class':
         $class_id_to_delete = filter_input(INPUT_POST, 'class_id', FILTER_VALIDATE_INT);
         include('./controller/classes.php');
