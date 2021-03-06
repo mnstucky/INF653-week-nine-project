@@ -24,3 +24,21 @@ function get_types()
     $statement->closeCursor();
     return $types;
 }
+
+function add_type($type_name) {
+    global $db;
+    $query = 'INSERT INTO types (type) VALUES (:typename)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':typename', $type_name);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function delete_type($typeId) {
+    global $db;
+    $query = 'DELETE FROM types WHERE id = :typeid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':typeid', $typeId);
+    $statement->execute();
+    $statement->closeCursor();
+}

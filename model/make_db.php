@@ -24,3 +24,21 @@ function get_makes()
     $statement->closeCursor();
     return $makes;
 }
+
+function add_make($make_name) {
+    global $db;
+    $query = 'INSERT INTO makes (make) VALUES (:makename)';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':makename', $make_name);
+    $statement->execute();
+    $statement->closeCursor();
+}
+
+function delete_make($makeId) {
+    global $db;
+    $query = 'DELETE FROM makes WHERE id = :makeid';
+    $statement = $db->prepare($query);
+    $statement->bindValue(':makeid', $makeId);
+    $statement->execute();
+    $statement->closeCursor();
+}

@@ -47,7 +47,23 @@ switch ($action) {
     case 'show_types_form':
         include('./controller/types.php');
         break;
+    case 'add_type':
+        $new_type = filter_input(INPUT_POST, 'new_type');
+        include('./controller/types.php');
+        break;
+    case 'delete_type':
+        $type_id_to_delete = filter_input(INPUT_POST, 'type_id', FILTER_VALIDATE_INT);
+        include('./controller/types.php');
+        break;
     case 'show_makes_form':
+        include('./controller/makes.php');
+        break;
+    case 'add_make':
+        $new_make = filter_input(INPUT_POST, 'new_make');
+        include('./controller/makes.php');
+        break;
+    case 'delete_make':
+        $make_id_to_delete = filter_input(INPUT_POST, 'make_id', FILTER_VALIDATE_INT);
         include('./controller/makes.php');
         break;
     case 'show_classes_form':
