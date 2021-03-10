@@ -30,7 +30,7 @@
         <nav class="navbar navbar-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.php?action=list_vehicles">
-                    <h1>Zippy Used Autos</h1>
+                    <h1>Zippy Admin</h1>
                 </a>
             </div>
         </nav>

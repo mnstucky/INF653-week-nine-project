@@ -21,11 +21,10 @@ function get_vehicles_by_make($makeId, $sortMethod)
 {
     global $db;
     if ($sortMethod == 'year') {
-        $query = 'SELECT * FROM vehicles ORDER BY year DESC';
+        $query = 'SELECT * FROM vehicles WHERE make_id = :makeid ORDER BY year DESC';
     } else {
-        $query = 'SELECT * FROM vehicles ORDER BY price DESC';
+        $query = 'SELECT * FROM vehicles WHERE make_id = :makeid ORDER BY price DESC';
     }
-    $query = 'SELECT * FROM vehicles WHERE make_id = :makeid';
     $statement = $db->prepare($query);
     $statement->bindValue(':makeid', $makeId);
     $statement->execute();
@@ -82,7 +81,7 @@ function add_vehicle($makeId, $typeId, $classId, $year, $model, $price) {
 
 function delete_vehicle($vehicle_id_to_delete) {
     global $db;
-    $query = 'DELETE FROM vehicles WHERE id = :vehicle_id_to_delete';
+    $query = 'DELETE FROM vehicles WHERE vehicleid = :vehicle_id_to_delete';
     $statement = $db->prepare($query);
     $statement->bindValue(':vehicle_id_to_delete', $vehicle_id_to_delete);
     $statement->execute();

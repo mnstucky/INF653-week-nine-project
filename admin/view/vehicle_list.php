@@ -76,7 +76,7 @@
                         <td><?php echo '$' . number_format($vehicle['price'], 2) ?></td>
                         <td>
                             <form action="index.php" method="POST">
-                                <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['id']; ?>">
+                                <input type="hidden" name="vehicle_id" value="<?php echo $vehicle['vehicleID']; ?>">
                                 <input type="hidden" name="action" value="delete_vehicle">
                                 <button class="btn-close" aria-label="Delete"></button>
                             </form>
