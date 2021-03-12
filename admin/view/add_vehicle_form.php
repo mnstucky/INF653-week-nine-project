@@ -34,6 +34,7 @@
                     </option>
                 <?php } ?>
             </select>
+            <br/>
             <label for="new_vehicle_year">
                 Year:
             </label>
