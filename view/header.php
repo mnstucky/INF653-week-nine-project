@@ -12,6 +12,7 @@
         body {
             font-family: "Noto Sans", sans-serif;
         }
+
         .navbar {
             background: #ECE9E6;
             /* fallback for old browsers */
@@ -32,6 +33,18 @@
                 <a class="navbar-brand" href="index.php?action=list_vehicles">
                     <h1>Zippy Used Autos</h1>
                 </a>
+                <?php if ($action != 'register') {
+                    $lifetime = 60 * 60 * 24;
+                    session_set_cookie_params($lifetime, '/');
+                    session_start();
+                    if ($action != 'logout') {
+                        if (isset($_SESSION['userid'])) { ?>
+                            <p>Welcome <?php echo $_SESSION['userid']; ?>! (<a href="./index.php?action=logout">Sign Out</a>)</p>
+                        <?php } else { ?>
+                            <a class="nav-item" href="./index.php?action=register">Register</a>
+                        <?php }
+                    }
+                } ?>
             </div>
         </nav>
     </header>
